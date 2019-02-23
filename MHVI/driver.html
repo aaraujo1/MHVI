@@ -1,36 +1,80 @@
-<!DOCTYPE html>
-<html>
-
-  <head>
-    <title>MHVI</title>
-    <!--jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    <!-- Initialize Firebase-->
-    <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
-    <script src="firebase.js"></script>
-    <!--style -->
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--validation-->
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
-    <script src="validate.js"></script>
-    <script src="functions.js"></script>
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MHVI - Driver</title>
+  <!-- Need full jquery for UI can't use slim -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+          integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+          integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+          crossorigin="anonymous"></script>
+  <!-- Initialize Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+  <script src="firebase.js"></script>
+  <!-- validation -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+  <!-- site scripts -->
+  <script src="validate.js"></script>
+  <script src="functions.js"></script>
+  <script src="btns.js"></script>
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <!-- site stylesheet -->
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <!-- Jquery UI -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   </head>
-  <body>
-  <form id = "driver">
-    <h1>Driver</h1>
-    <select id = "list" name = "list">
-      <option value = "">Select Item</option>
-    </select>
-    <pre id = "driverOutput" class = "f"></pre>
-    <input type ="text" name ="driverTxtUpdate" id = "driverTxtUpdate" placeholder = "driver update here">
-    <button type = "submit" id ="driverPickUp">pick up</button>
-    <button type = "submit" id ="driverDropOff">drop off</button>
-  </form>
-  <br>
-  <br>
-  <button type = "button" id = "logoutBtn">Logout</button>
-</body>
+<body>
+    <div class="container">
 
+    <!--<input type = "image" src="pickup.png" id ="driverPickUp">-->
+
+        <button type = "button" id="driverPickUp" class = "btn btn-mhvi-primary btn-lg btn-tall col-sm-3"><i class="fas fa-box"></i> PICK UP</button>
+    <!--<input type = "image" src="dropoff.png" id ="driverDropOff">-->
+        <button type = "button" id="driverDropOff" class = "btn btn-mhvi-secondary btn-lg btn-tall col-sm-3"><i class="fas fa-box-open"></i> DROP OFF</button>
+
+    <br>
+
+
+
+      <form id = "driver" class="hide form-inline justify-content-center">
+          <div id = "pickUpHeading" class="hide p-4 bg-mhvi-primary text-center">
+              <h1>MHVI</h1>
+              <h2>DRIVER DROP OFF</h2>
+          </div>
+
+          <div id = "dropOffHeading" class="hide p-4 bg-mhvi-secondary text-center">
+              <h1>MHVI</h1>
+              <h2>DRIVER DROP OFF</h2>
+          </div>
+          <hr>
+        <br><br>
+
+        <input type ="text" class="form-control" name ="searchName" id = "searchName" placeholder = "Name of Item">
+        <input type ="text" class="form-control" name ="driverQuantityUpdate" id = "driverQuantityUpdate" placeholder = "Quantity">
+        <br>
+        <pre id = "driverOutput" class = "error"></pre>
+        <br>
+
+        <button type = "button" id = "driverPickUpSubmit" class = "btn btn-mhvi-primary btn-lg">Submit Pick Up</button>
+          <button type = "button" id = "driverDropOffSubmit" class = "btn btn-mhvi-secondary btn-lg">Submit Drop Off</button>
+        <br>
+          <br>
+          <button type="button" id="driverBack" class="btn btn-secondary btn-lg">Back</button>
+      </form>
+
+    <hr>
+        <div class="text-center">
+    <button type = "button" class = "btn btn-mhvi-red btn-lg btn-block col-sm-6 mx-auto" id = "logoutBtn">Logout</button>
+        </div>
+    </div>
+</body>
 </html>
